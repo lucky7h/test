@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Weaver</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <script>
+        //indicate if glossary is required
+        var weaver_loadGlossary = false;
+    </script>
+    <script src="js/splash.bundle.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/d3.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="header">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 800 37"
+            enable-background="new 0 0 800 37" xml:space="preserve">
+            </svg>
+        </div>
+        <iframe id="frame" frameBorder="0">
+            Your browser does not support HTML5 iframe.
+        </iframe>
+        <div class="video">
+            <div class="big-play">
+                <svg fill="white" height="100%" viewBox="0 0 36 36" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="36" x="0" y="0" fill="transparent"></rect>
+                    <defs>
+                        <path id="PlayPath" d="M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28" />
+                        <path id="PausePath" d="M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26" />
+                    </defs>
+                    <path id="bigPlayPath">
+                </svg>
+            </div>
+            <video>
+                <source type="video/mp4">
+                <track>
+                    Your browser does not support HTML5 video.
+            </video>
+        </div>
+        <div class="footer">
+            <div class="desktop">
+                <svg version="1.1" id="desktopCtrl" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                y="0px" viewBox="0 0 800 37" enable-background="new 0 0 800 37" xml:space="preserve">
+                    <g id="angle-button-desktop-back">
+                        <g id="angle-button-desktop-back-unclicked">
+                            <svg fill="white" height="40" viewBox="0 0 24 24" width="40" x="15" y="0" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-back-clicked">
+                            <svg fill="white" height="40" viewBox="0 0 24 24" width="40" x="16" y="1" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-back-disabled">
+                            <svg fill="#bcbcbc" height="40" viewBox="0 0 24 24" width="40" x="15" y="0" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                    </g>
+                    <g id="angle-button-desktop-play">
+                        <g id="angle-button-desktop-play-unclicked">
+                            <svg fill="white" height="55" viewBox="0 0 36 36" x="57" y="-7" width="55" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="36" height="36" x="0" y="0" fill="transparent"></rect>
+                                <path class="desktopPlayPath" d="M8 5v14l11-7z" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-play-clicked">
+                            <svg fill="white" height="55" viewBox="0 0 36 36" x="57" y="-7" width="55" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="36" height="36" x="0" y="0" fill="transparent"></rect>
+                                <path class="desktopPlayPath" d="M8 5v14l11-7z" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-play-disabled">
+                            <svg fill="#bcbcbc" height="55" viewBox="0 0 36 36" x="58" y="-7" width="55" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="36" height="36" x="0" y="0" fill="transparent"></rect>
+                                <path class="desktopPlayPath" d="M8 5v14l11-7z" />
+                            </svg>
+                        </g>
+                    </g>
+                    <g id="angle-button-desktop-next">
+                        <g id="angle-button-desktop-next-unclicked">
+                            <svg fill="white" height="40" viewBox="0 0 24 24" width="40" x="115" y="0" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-next-clicked">
+                            <svg fill="#eee" height="40" viewBox="0 0 24 24" width="40" x="116" y="1" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-next-disabled">
+                            <svg fill="#bcbcbc" height="40" viewBox="0 0 24 24" width="40" x="115" y="0" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                    </g>
+                    <g id="angle-button-desktop-reset">
+                        <g id="angle-button-desktop-reset-unclicked">
+                            <svg fill="white" height="27" viewBox="0 0 24 24" width="27" x="169" y="7" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-reset-clicked">
+                            <svg fill="#eee" height="27" viewBox="0 0 24 24" width="27" x="170" y="8" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-reset-disabled">
+                            <svg fill="#acacac" height="27" viewBox="0 0 24 24" width="27" x="169" y="7" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z" />
+                            </svg>
+                        </g>
+                    </g>
+                    <g id="angle-button-desktop-cc">
+                        <g id="angle-button-desktop-cc-unclicked">
+                            <svg fill="white" height="30" viewBox="0 0 24 24" width="30" x="645" y="5" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"
+                                />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-cc-clicked">
+                            <svg fill="#eee" height="30" viewBox="0 0 24 24" width="30" x="646" y="6" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"
+                                />
+                            </svg>
+                        </g>
+                        <g id="angle-button-desktop-cc-disabled">
+                            <svg fill="#bcbcbc" height="30" viewBox="0 0 24 24" width="30" x="645" y="5" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"
+                                />
+                            </svg>
+                        </g>
+                    </g>
+                    <g id="angle-title">
+                        <text font-family="sans-serif" x="740" y="29" font-size="25" fill="white">
+                            title
+                        </text>
+                    </g>
+                    <g id="angle-full-screen">
+                        <g id="angle-full-screen-unclicked">
+                            <svg fill="white" height="30" viewBox="0 0 24 24" width="30" x="690" y="5" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+                            </svg>
+                        </g>
+                        <g id="angle-full-screen-clicked">
+                            <svg fill="#eee" height="30" viewBox="0 0 24 24" width="30" x="691" y="6" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+                            </svg>
+                        </g>
+                        <g id="angle-full-screen-disabled">
+                            <svg fill="#bcbcbc" height="30" viewBox="0 0 24 24" width="30" x="690" y="5" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+                            </svg>
+                        </g>
+                    </g>
+                    <g id="angle-progress-bar-desktop">
+                        <g id="angle-progress-bar-desktop-bar">
+                            <rect x="220" y="12.5" fill="#efefef" width="400" height="15" />
+                        </g>
+                        <g id="angle-progress-bar-desktop-bar-fill">
+                            <rect x="220" y="12.5" fill="#c3c3c3" width="1" height="15" />
+                        </g>
+                        <g id="angle-progress-bar-desktop-button">
+                            <circle cx="220" cy="20" fill="#eee" r="12" stroke="#999" stroke-width="3" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <div class="mobile">
+                <svg version="1.1" id="mobileCtrl" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                y="0px" viewBox="0 0 800 50" enable-background="new 0 0 800 50" xml:space="preserve">
+                    <g id="angle-button-mobile-back">
+                        <g id="angle-button-mobile-back-unclicked">
+                            <svg fill="white" height="50" viewBox="0 0 24 24" width="50" x="25" y="1" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-mobile-back-clicked">
+                            <svg fill="#789" height="50" viewBox="0 0 24 24" width="50" x="26" y="2" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-mobile-back-disabled">
+                            <svg fill="#acacac" height="50" viewBox="0 0 24 24" width="50" x="25" y="1" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                    </g>
+                    <g id="angle-button-mobile-next">
+                        <g id="angle-button-mobile-next-unclicked">
+                            <svg fill="white" height="50" viewBox="0 0 24 24" width="50" x="90" y="1" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-mobile-next-clicked">
+                            <svg fill="#789" height="50" viewBox="0 0 24 24" width="50" x="91" y="2" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                        <g id="angle-button-mobile-next-disabled">
+                            <svg fill="#acacac" height="50" viewBox="0 0 24 24" width="50" x="90" y="1" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </g>
+                    </g>
+                    <g id="angle-progress-bar-mobile">
+                        <g id="angle-progress-bar-mobile-bar">
+                            <rect x="170" y="22" fill="white" width="420" height="10" />
+                        </g>
+                        <g id="angle-progress-bar-mobile-bar-fill">
+                            <rect x="170" y="22" fill="#acacac" width="1" height="10" />
+                        </g>
+                        <g id="angle-progress-bar-mobile-button">
+                            <circle cx="170" cy="27" fill="white" r="7" stroke="#CD9B9B" stroke-width="3" />
+                        </g>
+                    </g>
+                    <g id="angle-button-mobile-cc">
+                        <g id="angle-button-mobile-cc-unclicked">
+                            <svg fill="#eee" height="40" viewBox="0 0 24 24" width="40" x="675" y="6" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"
+                                />
+                            </svg>
+                        </g>
+                        <g id="angle-button-mobile-cc-clicked">
+                            <svg fill="#789" height="40" viewBox="0 0 24 24" width="40" x="676" y="7" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"
+                                />
+                            </svg>
+                        </g>
+                        <g id="angle-button-mobile-cc-disabled">
+                            <svg fill="#acacac" height="40" viewBox="0 0 24 24" width="40" x="675" y="6" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="24" x="0" y="0" fill="transparent"></rect>
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"
+                                />
+                            </svg>
+                        </g>
+                    </g>
+                    <g id="angle-title-mobile">
+                        <text font-family="sans-serif" x="740" y="34" font-size="25" fill="white">
+                            title
+                        </text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

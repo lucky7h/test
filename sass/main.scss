@@ -1,0 +1,121 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    border: none;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#app{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-color: #789;
+}
+
+#frame {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 7.4%;
+    height: 85.2%;
+}
+
+.header {
+    width: 100%;
+    height: 7.5%;
+    position: absolute;
+    top:0px;
+    border: none;
+    background-color: #789;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.video {
+    width: 100%;
+    position: absolute;
+    top: 7.4%;
+    text-align: center;
+}
+
+.video > video{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.footer {
+    width: 100%;
+    height: 7.5%;
+    position: absolute;
+    bottom: 0px;
+    border: none;
+    background-color: #789;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.big-play {
+    position: absolute;
+    width: 20%;
+    height: 30%;
+    top: 35%;
+    left: 39%;
+    z-index: 2;
+    display: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.desktop{
+    visibility: visible;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mobile{
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+    .mobile{
+        visibility: visible;
+    }
+    .desktop{
+        visibility: hidden;
+    }
+    .header{
+        height: 12%;
+        background-color: transparent;
+        opacity: 1;
+    }
+    .footer{
+        height: 12%;
+        background-color: transparent;
+        opacity: 1;
+    }
+    .video{
+        top: 0;
+        height: 100%;
+    }
+    #frame {
+        top: 0%;
+        height: 100%;
+    }
+}
