@@ -10,4 +10,7 @@
 niuniuniu
 77sgfisudgfisgsidgsofgs
 333333333333333333333333333333333
+asdasd
+asdasdas
+ads
 }(window));
