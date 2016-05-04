@@ -1,7 +1,7 @@
 /*!
  *
  * New Weaver Engine depending on Splash Library
- * 
+ *
 */
 
 (function(window){
@@ -12,5 +12,5 @@ niuniuniu
 333333333333333333333333333333333
 asdasd
 asdasdas
-ads
+adsasdsadasdasdasdasdasdasdsad
 }(window));
