@@ -9,4 +9,7 @@
 	//new
 niuniuniu
 77sgfisudgfisgsidgsofgs
+asdasd
+asdasdas
+ads
 }(window));
